@@ -1,0 +1,57 @@
+\documentclass[
+	10pt,
+	twocolumn,
+	a4paper,
+]{article}
+\usepackage{listings}
+
+\usepackage{ctex}
+\usepackage{graphicx}
+
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, landscape]{geometry}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\includegraphics{beihang.png}Beihang Univ.}
+\chead{} 
+\rhead{\thepage} 
+\lfoot{}
+\cfoot{}
+\rfoot{} 
+
+\lstset{
+	breaklines=true,
+	basicstyle=\footnotesize\ttfamily,
+	showspaces=false,
+	language=C++,
+	tabsize=4,
+}
+
+\begin{document}
+\section{Edit Esp}
+\lstinputlisting{editEsp.cc}
+\section{Java Header}
+\lstinputlisting{Main.java}
+\section{Dancing Links精确覆盖(矩阵处理)}
+\lstinputlisting{DLX-Exact-Mat.cc}
+\section{Dancing Links重复覆盖(矩阵处理)}
+\lstinputlisting{DLX-Repeat-Mat.cc}
+
+leftist
+\lstinputlisting{leftist.cc}
+treap by HL
+
+kmp
+
+exkmp
+
+迪卡尔树
+
+SA
+
+AC自动机
+
+Manacher
+
+
+\end{document}

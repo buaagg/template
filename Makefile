@@ -1,0 +1,2 @@
+ALL:
+	xelatex mod.tex
