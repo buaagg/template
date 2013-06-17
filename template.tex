@@ -1,0 +1,73 @@
+\documentclass[
+	10pt,
+	twocolumn,
+	a4paper,
+]{article}
+\usepackage{listings}
+
+\usepackage{ctex}
+\usepackage{graphicx}
+
+\usepackage[top=1in, bottom=1in, left=0.75in, right=0.75in, landscape]{geometry}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\includegraphics{beihang.png}Beihang Univ.}
+\chead{} 
+\rhead{\thepage} 
+\lfoot{}
+\cfoot{}
+\rfoot{} 
+
+\lstset{
+	breaklines=true,
+	basicstyle=\footnotesize\ttfamily,
+	showspaces=false,
+	language=C++,
+	tabsize=4,
+}
+
+\begin{document}
+\section{Formula}
+Eular Formular: |V| - |E| + |F| = 2
+|𝐴∪𝐵∪𝐶|=|𝐴| |𝐵| |𝐶| |𝐴∩𝐵| |𝐵∩𝐶| |𝐴∩𝐶| |𝐴∩𝐵∩𝐶|
+|𝐴̅∩𝐵̅∩𝐶̅|=Ω |𝐴| |𝐵| |𝐶| |𝐴∩𝐵| |𝐵∩𝐶| |𝐴∩𝐶| |𝐴∩𝐵∩𝐶|
+Catalan Number: $C_n = (4n-2) / (n+1) C_{n-1}$
+Burnside引理
+可以通过dfs序列化
+Floyd算法别忘了设置dist[i][i] = 0
+想着比赛的时候可以打表
+初始化一定不要忘记
+提交时记得把所有的调试信息都删掉
+想着可以用二分的方法，把问题转化为判定问题。
+对于几何问题，没想法就先动手画画图，别上来就解析法。
+数组一定要开的足够打大，能用LL就别用int
+数位dp一定要写暴力check
+
+\section{Edit Esp}
+\lstinputlisting{editEsp.cc}
+\section{Java Header}
+\lstinputlisting{Main.java}
+\section{Dancing Links精确覆盖(矩阵处理)}
+\lstinputlisting{DLX-Exact-Mat.cc}
+\section{Dancing Links重复覆盖(矩阵处理)}
+\lstinputlisting{DLX-Repeat-Mat.cc}
+
+leftist
+\lstinputlisting{leftist.cc}
+treap by HL
+
+kmp
+
+exkmp
+
+迪卡尔树
+
+SA
+
+AC自动机
+
+Manacher
+
+
+\end{document}

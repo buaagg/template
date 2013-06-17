@@ -1,2 +1,2 @@
 ALL:
-	xelatex mod.tex
+	xelatex template.tex
