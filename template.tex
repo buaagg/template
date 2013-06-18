@@ -38,7 +38,7 @@
 \item $|\bar A \cap \bar B \cap \bar C | = |\Omega| - |A| - |B| - |C| + |A \cap B| + |A \cap C| + |B \cap C| - |A \cap B \cap C| $
 \item Catalan Number: $C_n = (4n-2) / (n+1) C_{n-1}$
 \item [TODO]Burnside引理
-\item 可以通过dfs序列化
+\item 记得树可以通过dfs序列化
 \item Floyd算法别忘了设置dist[i][i] = 0
 \item 想着比赛的时候可以打表
 \item 初始化一定不要忘记
@@ -87,6 +87,13 @@
 \lstinputlisting{log.cc}
 \section{romberg}
 \lstinputlisting{romberg.cc}
+\section{halfPlane}
+\lstinputlisting{halfPlane.cc}
+\section{convex}
+\lstinputlisting{convex.cc}
+\section{给你一些线段,找到一条直线,要求穿过尽量多的线段 –O(n2logn)}
+\lstinputlisting{sortByAng.cc}
+
 
 
 leftist
