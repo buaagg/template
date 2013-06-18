@@ -31,8 +31,8 @@ void prez(const char x[], int m, int next[]) {
 	}
 }
 
-//next[i]: x[i..m-1]与x[0..m-1]的最长公共前缀长度
-//ext[i]: y[i..n-1]与x[0..m-1]的最长公共前缀长度
+//next[i]: lcp of x[i..m-1] and x[0..m-1]
+//ext[i]:  lcp of y[i..n-1] and x[0..m-1]
 void z(const char x[], int m, const char y[], int n, int next[], int ext[]) {
 	int k = 0, r = 0, j;
 	prez(x, m, next); next[0] = 0;
