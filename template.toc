@@ -1,0 +1,31 @@
+\contentsline {section}{\numberline {1}TODO}{1}
+\contentsline {section}{\numberline {2}Formula}{1}
+\contentsline {section}{\numberline {3}Polya}{2}
+\contentsline {section}{\numberline {4}Edit Esp}{2}
+\contentsline {section}{\numberline {5}ufset}{2}
+\contentsline {section}{\numberline {6}Java Header}{3}
+\contentsline {section}{\numberline {7}CartesianTree}{3}
+\contentsline {section}{\numberline {8}Dancing Links精确覆盖(矩阵处理)}{4}
+\contentsline {section}{\numberline {9}Dancing Links重复覆盖(矩阵处理)}{5}
+\contentsline {section}{\numberline {10}dinic}{6}
+\contentsline {section}{\numberline {11}costflow}{7}
+\contentsline {section}{\numberline {12}planarmincut}{8}
+\contentsline {section}{\numberline {13}kosaraju}{9}
+\contentsline {section}{\numberline {14}kmp \$ z}{11}
+\contentsline {section}{\numberline {15}字符串最小重复单元的重复次数}{11}
+\contentsline {section}{\numberline {16}manacher}{12}
+\contentsline {section}{\numberline {17}dfa}{12}
+\contentsline {section}{\numberline {18}AC自动机数位dp}{13}
+\contentsline {section}{\numberline {19}FFT}{15}
+\contentsline {section}{\numberline {20}exgcd}{17}
+\contentsline {section}{\numberline {21}isprime}{18}
+\contentsline {section}{\numberline {22}rho}{18}
+\contentsline {section}{\numberline {23}crt}{18}
+\contentsline {section}{\numberline {24}log}{18}
+\contentsline {section}{\numberline {25}romberg}{19}
+\contentsline {section}{\numberline {26}halfPlane}{19}
+\contentsline {section}{\numberline {27}convex}{22}
+\contentsline {section}{\numberline {28}convex3d}{22}
+\contentsline {section}{\numberline {29}geom3d}{23}
+\contentsline {section}{\numberline {30}给你一些线段,找到一条直线,要求穿过尽量多的线段 –$O(n^2logn)$}{23}
+\contentsline {section}{\numberline {31}leftist}{24}

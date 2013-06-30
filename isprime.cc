@@ -3,9 +3,9 @@ bool witness(LL a, LL n) {
 	LL m = n - 1;
 	do {m /= 2; k++; } while (m % 2 == 0);
 	LL x = pow_mod(a, m, n);
-	if (x == 1) return true;
+	if (1 == x) return true;
 	for (int i = 0; i < k; x = mul_mod(x, x, n); ++i)
-		if (x == n - 1) return true;
+		if (n - 1 == x) return true;
 	return false;
 }
 

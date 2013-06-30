@@ -3,18 +3,12 @@ struct Point {
 	void read() { scanf("%lf%lf", &x, &y); }
 	Point() {}
 	Point(double x, double y) : x(x), y(y) {}
-	Point operator + (const Point& o) const { return Point(x + o.x, y + o.y); }
-	Point operator - (const Point& o) const { return Point(x - o.x, y - o.y); }
-	Point operator * (const double o) const { return Point(x * o, y * o); }
-	Point operator / (const double o) const { return Point(x / o, y / o); }
-	double operator * (const Point& o) const { return x * o.x + y * o.y; }
-	double oeprator ^ (const Point& o) const { return x * o.y - y * o.x; }
 	bool operator == (const Point& o) const { return !sign(x - o.x) && !sign(y - o.y); }
 	int quad() const { return sign(x) >= 0 ? sign(y) >= 0 ? 1 : 4 : sign(y) >= 0 ? 2 : 3; }
 	double length() const { return sqrt(x * x + y * y); }
 	Point setLength(double d) const { return *this * (d / length()); }
 	Point unit() const { return *this / length(); }
-	double project(const Point& n) const { //投影到n上的长度
+	double project(const Point& n) const { //length: project to n
 		return *this * n.unit();
 	}
 	friend int intersect(Point& p, const Point& a, const Point& v, const Point& b, const Point& u) {
@@ -71,7 +65,7 @@ struct HalfPlane {
 	bool out(const LineAV& x, const LineAV& y, const LineAV& z) {
 		Point p; intersect(p, x, y);
 		int d = sign( z.v ^ (p - z.a) ); if ( d != 0 ) return d < 0;
-		int t = sign( x.v ^ z.v ); return t > 0;
+		int t = sign( x.v ^ z.v ) * sign( x.v ^ y.v ); return t > 0;
 	}
 	void solve(LineAV ls[], int &n, int &s, int &t) {
 		sort(ls, ls + n); n = unique(ls, ls + n) - ls;
@@ -87,7 +81,7 @@ struct HalfPlane {
 			while (s < t && out(ls[s+1], ls[s], ls[t])) ++s;
 		} while (n != t - s + 1);
 		ls[t+1] = ls[s];
-	}t
+	}
 } halfPlane;
 
 Point vertex[] = { //千万要逆时针给出
@@ -151,7 +145,7 @@ struct Poly {
 		double r = -1, t;
 		Point x, y;
 		for (int i = 0, j = 1; i < n; ++i) {
-			while ( cross(p[i], p[i+1], p[j+1]) > cross(p[i], p[i+1, p[j]]) + eps ) 
+			while (cross(p[i],p[i+1],p[j+1]) > cross(p[i],p[i+1],p[j])+eps) 
 				if (++j == n) j = 0;
 			if ((t = (p[i] - p[j]).length() ) > r) {
 				r = t; x = p[i]; y = p[j];
@@ -159,11 +153,10 @@ struct Poly {
 			if ((t = (p[i+1] - p[j]).length()) > r){
 				r = t; x = p[i+1]; y = p[j];
 			}
-
 		}
 		return make_pair(x, y); 
 	}
-};
+} poly;
 
 struct Convex : Poly {
 	int _in(const Point& o, int i) const {

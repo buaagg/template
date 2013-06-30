@@ -3,23 +3,8 @@ struct Point3D {
 	void read() { cin >> x >> y >> z; }
 	Point3D() {}
 	Point3D(double x, double y, double z) : x(x), y(y), z(z) { }
-	Point3D operator + (const Point3D& o) const { 
-		return Point3D(x + o.x, y + o.y, z + o.z);
-	}
-	Point3D operator - (const Point3D& o) const {
-		return Point3D(x - o.x, y - o.y, z - o.z)
-	}
-	Point3D operator * (double o) const {
-		return Point3D(x * o, y * o, z * o);
-	}
-	Point3D operator / (double o) const {
-		return Point3D(x / o, y / o, z / o);
-	}
 	Point3D operator ^ (const Point3D& o) const {
 		return Point3D(y * o.z - z * o,y, z * o.x - x * o.z, x * o.y - y * o.x);
-	}
-	double operator * (const Point3D& o) const {
-		return x * o.x + y * o.y + z * o.z;
 	}
 	friend Point3D cross(const Point3D& a, const Point3D& b, const Point3D& c) {
 		return (b-a) ^ (c-a);
@@ -131,7 +116,7 @@ struct Poly3D {
 	}
 	int in(const Point3D& o) const { /*-1 on face*/
 		for (int i = 0; i < fc; ++i) {
-			const Point3D& a = p[ f[i][0] ], b = p[ f[i][1] ], c = p[ f[i][2] ];
+			const Point3D& a = p[f[i][0]], &b = p[f[i][1]], &c = p[f[i][2]];
 			int flag = sign( mix(a-o, b-o, c-o) );
 			if ( flag == 0 && pointInTri(o, a, b, c) ) return -1;
 			if ( flag < 0 ) return false;
@@ -141,7 +126,7 @@ struct Poly3D {
 	double dist(const Point3D& o) const {
 		double ans = inf;
 		for (int i = 0; i < fc; ++i) {
-			const Point3D& a = p[ f[i][0] ], b = p[ f[i][1] ]m c = p[ f[i][2] ];
+			const Point3D& a = p[f[i][0]], &b = p[f[i][1]], &c = p[f[i][2]];
 			Point3D normal = (b - a) ^ (c - a);
 			double d = (a - o).project( normal );
 			checkmin(ans, d);
@@ -151,7 +136,7 @@ struct Poly3D {
 	double facecnt() const {
 		static Point3D normal[maxf];
 		for (int i = 0; i < fc; ++i) {
-			const Point3D &a = p[ f[i][0] ], b = p[ f[i][1] ], c = p[ f[i][2] ];
+			const Point3D& a = p[f[i][0]], &b = p[f[i][1]], &c = p[f[i][2]];
 			normal[i] = cross(a, b, c).unit();
 		}
 		sort(normal, normal + fc);
@@ -160,7 +145,7 @@ struct Poly3D {
 	double surface() const {
 		double ans = 0;
 		for (int i = 0; i < fc; ++i) {
-			const Point3D &a = p[ f[i][0] ], b = p[ f[i][1] ], c = p[ f[i][2] ];
+			const Point3D& a = p[f[i][0]], &b = p[f[i][1]], &c = p[f[i][2]];
 			ans += cross(a, b, c).length();
 		}
 		return ans / 2;
@@ -169,7 +154,7 @@ struct Poly3D {
 		double ans = 0;
 		Point3D o = p[0];
 		for (int i = 0; i < fc; ++i) {
-			const Point3D& a = p[ f[i][0] ], b = p[ f[i][1] ], c = p[ f[i][2] ];
+			const Point3D& a = p[f[i][0]], &b = p[f[i][1]], &c = p[f[i][2]];
 			ans += mix(a - o, b - o, c - o); 
 		}
 		return ans / 6;
@@ -179,11 +164,11 @@ struct Poly3D {
 		double vol = 0;
 		const Point3D o = p[0];
 		for (int i = 0; i < fc; ++i) {
-			const Point3D& a = p[ f[i][0] ], b = p[ f[i][1] ], c = p[ f[i][2] ];
+			const Point3D& a = p[f[i][0]], &b = p[f[i][1]], &c = p[f[i][2]];
 			double v = mix(a-o, b-o, c-o);
 			ans = ans + (o+a+b+c) * (v/4);
 			vol += v;
 		}
 		return ans / vol;
 	}
-} poly;;
+} poly;

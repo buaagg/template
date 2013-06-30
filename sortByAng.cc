@@ -39,7 +39,7 @@ void solve() {
 	int pcnt = 0, res = 0;
 	for (int i = 0; i < n; ++i) {
 		scanf("%lf%lf", &a[i].x, &a[i].y); p[pcnt++] = a[i];
-		scanf("%lf%lf", &a[i].x, &a[i].y); p[pcnt++] = b[i];
+		scanf("%lf%lf", &b[i].x, &b[i].y); p[pcnt++] = b[i];
 	}
 	sort(p, p + pcnt); pcnt = unique(p, p + pcnt) - p;
 	

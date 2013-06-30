@@ -5,18 +5,6 @@ struct Zn {
 	LL eval(LL a) {
 		a %= n; return a >= 0 ? a : a + n;
 	}
-	LL mul(LL a, LL b) {
-		if (n <= 1000000000) return a * b % n;
-		assert(0);
-	}
-	LL pow(LL a, LL b) {
-		LL r = 1 % n;
-		for (;b;) {
-			if (b & 1) r = mul(r, a);
-			if (b >>= 1) a = mul(a, a);
-		}
-		return r;
-	}
 	LL inv(LL a) {
 		LL x, y, d = exgcd(a, n, x, y);
 		assert(d == 1);
@@ -36,7 +24,7 @@ struct Zp : Zn {
 	};
 	LL log(LL a, LL b) { //a ^ x = b
 		int m = (int)( ceil( sqrt(n) ) );
-		LL v=  inv( pow(a, m) );
+		LL v = inv( pow(a, m) );
 		id[0] = 0; mexp[0] = 1;
 		for (int i = 1; i <= m; ++i) {
 			id[i] = i; mexp[i] = mul(mexp[i-1], a);

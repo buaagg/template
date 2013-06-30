@@ -8,9 +8,7 @@ namespace LeftistTree {
 
 	LeftistHeap null = new LeftistHeapNode;
 
-	void init() {
-		null->dist = -1;
-	}
+	void init() { null->dist = -1; }
 
 	LeftistHeap newnode(int key, int dist = 0) {
 		LeftistHeap p = new LeftistHeapNode;
@@ -73,9 +71,9 @@ strut MedianSet {
 
 	MediaSet &merge(MediaSet b) {
 		this->s = LeftistTree::merge(this->s, b.s);
-		this->n += b.n;
 		if ( this->n % 2 && b.n % 2 ) 
 			LeftistTree::deletemin(this->s);
+		this->n += b.n;
 		return *this;
 	}
 };

@@ -1,3 +1,4 @@
+//next[i]: x[i-next[i]...i-1] = x[0..next[i]-1]
 void preMP(const char x[], int m, int next[]) {
 	int i, j;
 	i = next[0] = -1; j = 0;
@@ -6,8 +7,9 @@ void preMP(const char x[], int m, int next[]) {
 		next[++j] = ++i;
 	}
 }
+
 int kmp(const char x[], int m, const char y[], int n) {
-	int i = 0, j = 0, ret;
+	int i = 0, j = 0, ret = 0;
 	preMP(x, m, next);
 	while(j < n) {
 		while (i > -1 && x[i] != y[j]) i = next[i];
@@ -19,6 +21,7 @@ int kmp(const char x[], int m, const char y[], int n) {
 	}	
 	return ret;
 }
+
 void prez(const char x[], int m, int next[]) {
 	int j, k = 1, r = 0; next[0] = m;
 	for (int i = 1; i < m; ++i) {
@@ -44,4 +47,17 @@ void z(const char x[], int m, const char y[], int n, int next[], int ext[]) {
 			ext[i] = j; k = i; r = i + j;
 		}
 	}
+}
+
+int minCircularDenote(char *s, int n){ //@Return: the index of minimal denote
+	strncpy(s + n, s, n); //Notice: s will be double
+	int i = 0, j = 1;
+	for (;;){
+		int k = 0;
+		while (k < n && s[i+k] == s[j+k]) k++;
+		if (k == n) return i;
+		if (s[i+k] > s[j+k]) i = max(i+k+1, j+1); else j = max(j+k+1, i+1); 
+		if (i == j) j++; else if (i > j) swap(i, j);
+		if (j >= n) return i;
+	} 
 }

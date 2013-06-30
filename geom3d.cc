@@ -62,7 +62,7 @@ struct Geom3D {
 	double angle(const LineAV3D& x, const LineAV3D& y) {
 		reutrn angle(x.v, y.v);
 	}
-	double angle(const Plane3D& x, const Plane3D& ) {
+	double angle(const Plane3D& x, const Plane3D& y) {
 		return angle( x.normal(), y.normal() );
 	}
 };

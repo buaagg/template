@@ -1,39 +1,8 @@
-#include <algorithm>
-#include <cassert>
-using namespace std;
-typedef long long LL;
-
-#define rep(i, n) for (int i = 0; i < (n); ++i)
-const int maxn = 10000;
-
 struct Zp {
 	const LL mod; const int pri;
 	Zp(LL mod, int pri) : mod(mod), pri(pri) {
 	}
 	Zp(LL mod) : mod(mod), pri( primitive() ) {
-	}
-	LL add(LL a, LL b) {
-		a += b; return a >= mod ? a - mod : a;
-	}
-	LL sub(LL a, LL b) {
-		a -= b; return a < 0 ? a + mod : a;
-	}
-	LL mul(LL a, LL b) {
-		if ( mod <= 1000000000 ) return a * b % mod;
-		LL t = (LL)( (double)a * b / mod + 0.5 );
-		LL r = ( a * b - t * mod ) % mod;
-		return r >= 0 ? r : r + mod;
-	}
-	LL pow(LL a, LL b) {
-		LL r = 1;
-		for (;b;) {
-			if ( b & 1 ) r = mul(r, a);
-			if ( b >>= 1 ) a = mul(a, a);
-		}
-		return r;
-	}
-	LL inv(LL a) {
-		return pow(a, mod - 2);
 	}
 	void fft(int n, LL root, LL a[]) {
 		for (int m = n; m >= 2; m >>= 1) {
@@ -168,7 +137,7 @@ struct mp { //BigUnsignedInteger
 				t = 0;
 			}
 		}
-		while (r.n && r.dat[r.n - 1] == 0) --r.n;
+		while (r.n && 0 == r.dat[r.n - 1]) --r.n;
 	}
 	friend void mul(mp& r, const mp& x, int y) {
 		int i = 0;
@@ -196,8 +165,7 @@ struct mp { //BigUnsignedInteger
 			r = r * base + x.dat[i];
 			q.dat[i] = r / y;
 		}
-		while (q.n && q.dat[q.n-1] == 0) --q.n;
-
+		while (q.n && 0 == q.dat[q.n-1]) --q.n;
 	}
 };
 

@@ -28,9 +28,12 @@
 }
 
 \begin{document}
+
 \section{TODO}
 \begin{itemize}
 \item 线段相交
+\item SA[M]
+\item 割点/桥
 \end{itemize}
 \section{Formula}
 \begin{itemize} 
@@ -39,7 +42,6 @@
 \item $|A \cup B \cup C | = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|$
 \item $|\bar A \cap \bar B \cap \bar C | = |\Omega| - |A| - |B| - |C| + |A \cap B| + |A \cap C| + |B \cap C| - |A \cap B \cap C| $
 \item Catalan Number: $C_n = (4n-2) / (n+1) C_{n-1}$
-\item [TODO]Burnside引理
 \item 记得树可以通过dfs序列化
 \item Floyd算法别忘了设置dist[i][i] = 0
 \item 想着比赛的时候可以打表
@@ -60,18 +62,48 @@
 \item 注意求递推式的时候可能要用到二项式定理,如求$ \Sigma_{i-1}^n{i^k k^i} (k \le 50) $
 \end{itemize} 
 
+\section{Polya}
+Burnside 引理:设 $G = \{p_1, p_2, ..., p_g\}$ 是目标集$[1, n]$ 上的置换群,$G$ 将$[1, n]$分成 $L$ 个等价类。
+设 $c_1(p_k)$ 是在置换 $p_k$ 作用下不动点的个数(也就是长度为 $1$ 的循环的个数),则等价类的个数
+$$L = \frac{1}{|G|} \Sigma_{i=1}^{g}{c_1(p_i)}$$
+
+Pòlya 定理:设 $G=\{a_1, a_2, ..., a_{|G|}\}$是 $N=\{1,2,..,N\}$上的置换群,现用 $m$ 种颜色对这 $N$ 个点染色, 则不同的染色方案数为:
+$$S = \frac{(m^{c_1}+m^{c_2}+ \ldots + m^{c_{|G|}})}{|G|}$$
+常见置换的循环数
+\begin{itemize}
+	\item 旋转:$n$ 个点顺时针(逆时针)旋转 $i$ 个位置的置换,循环数为 $gcd(n, i)$ 
+	\item 翻转:
+	\begin{itemize}
+		\item $n$ 为偶数时: 对称轴不过顶点,循环数为 $n/2$ 对称轴过顶点:循环数为 $n/2+1$
+		\item $n$ 为奇数时:循环数为$(n+1)/2$
+	\end{itemize}
+\end{itemize}
+立方体面用 k 种颜色涂色
+$$ \frac{8k^2 + 12 k^3 + 3 k^4 + k^6}{24} $$
+
+% general
 \section{Edit Esp}
 \lstinputlisting{editEsp.cc}
-\section{ufset}
-\lstinputlisting{ufset.cc}
 \section{Java Header}
 \lstinputlisting{Main.java}
+
+% DS
+\section{ufset}
+\lstinputlisting{ufset.cc}
+\section{leftist}
+\lstinputlisting{leftist.cc}
 \section{CartesianTree}
 \lstinputlisting{CartesianTree.cc}
-\section{Dancing Links精确覆盖(矩阵处理)}
-\lstinputlisting{DLX-Exact-Mat.cc}
-\section{Dancing Links重复覆盖(矩阵处理)}
-\lstinputlisting{DLX-Repeat-Mat.cc}
+\section{kmp \& z}
+\lstinputlisting{kmp.cc}
+%\section{字符串最小重复单元的重复次数}
+%\lstinputlisting{LongestRepeatedSubstring.cc}
+\section{manacher}
+\lstinputlisting{manacher.cc}
+\section{dfa}
+\lstinputlisting{dfa.cc}
+
+% Graph
 \section{dinic}
 \lstinputlisting{dinic.cc}
 \section{costflow}
@@ -80,10 +112,12 @@
 \lstinputlisting{planarmincut.cc}
 \section{kosaraju}
 \lstinputlisting{kosaraju.cc}
-\section{kmp AND exkmp}
-\lstinputlisting{kmp.cc}
-\section{FFT}
-\lstinputlisting{FFT.cc}
+
+% Math
+\section{romberg}
+\lstinputlisting{romberg.cc}
+\section{exgcd}
+\lstinputlisting{exgcd.cc}
 \section{isprime}
 \lstinputlisting{isprime.cc}
 \section{rho}
@@ -92,24 +126,26 @@
 \lstinputlisting{crt.cc}
 \section{log}
 \lstinputlisting{log.cc}
-\section{romberg}
-\lstinputlisting{romberg.cc}
+\section{FFT}
+\lstinputlisting{FFT.cc}
+
+% Geom
 \section{halfPlane}
 \lstinputlisting{halfPlane.cc}
 \section{convex}
 \lstinputlisting{convex.cc}
 \section{convex3d}
-\lstinputlisting{convex.cc}
+\lstinputlisting{convex3d.cc}
 \section{geom3d}
 \lstinputlisting{geom3d.cc}
-\section{给你一些线段,找到一条直线,要求穿过尽量多的线段 –O(n2logn)}
+\section{给你一些线段,找到一条直线,要求穿过尽量多的线段 –$O(n^2logn)$}
 \lstinputlisting{sortByAng.cc}
-\section{leftist}
-\lstinputlisting{leftist.cc}
 
-treap by HL
-迪卡尔树
-SA
-AC自动机
-Manacher
+%
+\section{Dancing Links精确覆盖(矩阵处理)}
+\lstinputlisting{DLX-Exact-Mat.cc}
+\section{Dancing Links重复覆盖(矩阵处理)}
+\lstinputlisting{DLX-Repeat-Mat.cc}
+%\section{AC自动机数位dp}
+%\lstinputlisting{acdig.cc}
 \end{document}
