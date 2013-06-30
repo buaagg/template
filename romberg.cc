@@ -1,6 +1,4 @@
-real f(real x) {
-	return exp(-x * x);
-}
+real f(real x) { return exp(-x * x); }
 //O(2 ^ maxitr) function evaluations
 real Romberg(real a, real b, real(*f)(real), real eps, int maxitr = 20) {
 	real T[maxitr][maxitr];

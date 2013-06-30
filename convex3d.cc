@@ -64,7 +64,6 @@ struct Poly3D {
 		sort(p, p + n); n = unique(p, p + n) - p;
 		this->n = n; fc = 0;
 	}
-
 	bool convex() {
 		random_shuffle(p, p + n);
 		if ( !findTet() ) return false;
@@ -107,7 +106,6 @@ struct Poly3D {
 			if ( mark[c][a] == cnt ) addface(a, c, v);
 		}
 	}
-
 	void addface(int a, int b, int c) {
 		f[fc][0] = a; f[fc][1] = b; f[fc][2] = c; ++fc;
 	}

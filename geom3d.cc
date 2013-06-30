@@ -7,9 +7,7 @@ struct LineAV3D {
 
 struct Plane3D {
 	Point3D a, b, c;
-	Point3D normal() const {
-		return cross(a, b, c);
-	}
+	Point3D normal() const { return cross(a, b, c);}
 };
 
 struct Geom3D {
@@ -25,10 +23,7 @@ struct Geom3D {
 	}
 	double dist(const LineAV3D& x, const LineAV3D& y) {
 		Point3D n = x.v ^ y.v;
-		if ( n.isZero() ) 
-			return dist(x.a, y); 
-		else 
-			return (x.a - y.a).project(n);
+		return n.isZero() ? dist(x.a, y) : (x.a - y.a).project(n);
 	}
 	Point3D foot(const Point3D& p, const LineAV3D &ln) {
 		return ln.a + ln.v.unit() * (p - ln.a).project(ln.v);

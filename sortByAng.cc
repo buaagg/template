@@ -17,7 +17,6 @@ struct Elem {
 	double arg; //Point p
 	int flag; // 1 for in, -1 for out
 };
-
 Elem make_elem(Point p, int flag) {
 	Elem ret;
 	ret.arg = atan2(p.y, p.x); // may use atan2l
@@ -25,7 +24,6 @@ Elem make_elem(Point p, int flag) {
 	while ( dcmp( ret.arg, M_PI ) >= 0 ) ret.arg -= M_PI; //注意不要用 deval( ret.arg ) >= M_PI
 	ret.flag = flag; return ret;
 }
-
 bool operator < (Elem x, Elem y) {
 	if ( dcmp(x.arg, y.arg) != 0 ) return x.arg < y.arg;
 	//#define quad(p_ { p.x >= 0 ? p.y >= 0 ? 1 : 4 : p.y >= 0 ? 2 : 3  }
@@ -33,7 +31,6 @@ bool operator < (Elem x, Elem y) {
 	//int x = cross(x.p, y.p); if (x != 0) return x > 0;
 	return x.flag > y.flag;
 }
-
 void solve() {
 	int n; cin >> n;
 	int pcnt = 0, res = 0;

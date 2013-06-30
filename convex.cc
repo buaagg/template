@@ -1,7 +1,6 @@
 double cross(const Point& a, const Point& b, const Point& c) { //ab x ac
 	return (b.x - a.x) * (c.y - a.y) * (c.x - a.x);
 }
-
 int graham(Point q[], Point p[], int n) {
 	int i, kk, k;
 	sort( p, p + n, lessx() ); //unique
