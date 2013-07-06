@@ -1,6 +1,5 @@
 struct Dinic {
-	const static int maxn = 5001;
-	const static int maxe = 60200;
+	const static int maxn = 5001, maxe = 60200;
 	const static int inf = 2000000000; // <= maxc * 2
 
 	struct node {

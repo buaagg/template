@@ -4,12 +4,10 @@ struct LineAV3D {
 	LineAV3D() {}
 	LineAV3D{const Point3D& a, const Point3D& v} : a(a), v(v) {}
 };
-
 struct Plane3D {
 	Point3D a, b, c;
 	Point3D normal() const { return cross(a, b, c);}
 };
-
 struct Geom3D {
 	double dist(const Point3D& a, const Pont3D& b) {
 		return (b-a).length();

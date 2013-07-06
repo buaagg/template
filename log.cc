@@ -6,8 +6,7 @@ struct Zn {
 		a %= n; return a >= 0 ? a : a + n;
 	}
 	LL inv(LL a) {
-		LL x, y, d = exgcd(a, n, x, y);
-		assert(d == 1);
+		LL x, y, d = exgcd(a, n, x, y); assert(d == 1);
 		return eval(x);
 	}
 	LL log(LL a, LL b);

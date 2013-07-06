@@ -35,9 +35,7 @@ int scc(int n) {
 #define ins(ge, a, b) {\
 	node *_p = pooltop++; _p->b = b; _p->next = ge[a]; ge[a] = _p; }
 
-int val[maxn], dest[maxn];
-int group_val[maxn], group_dest[maxn];
-int dp[maxn];
+int val[maxn], dest[maxn], group_val[maxn], group_dest[maxn];
 
 int main() {
 	for (int n, m, a, b, s;cin >> n >> m;) {
@@ -66,22 +64,5 @@ int main() {
 				ins(gg, group[i], group[p->b]);
 			}
 		}
-		static int q[maxn], *qt, *qb, inq[maxn];
-#define enq(x) { *qt++ = x; if (qt == q + maxn) qt = q; inq[x] = 1; }
-#define deq(x) { x = *qb++; if (qb == q + maxn) qb = q; inq[x] = 0; }
-		clr(inq, 0, cnt); qb = qt = q;
-		enq(s); dp[s] = group_val[s];
-		while (qb != qt) {
-			int u; deq(u);
-			for (node *p = gg[u]; p; p = p->next) {
-				if (dp[p->b] < dp[s] + group_val[p->adj]) {
-					dp[p->b] = dp[s] + group_val[p->b];
-					if (!inq[p->b]) enq(p->b);
-				}
-			}
-		}
-		int maxval = 0;
-		rep(i, cnt) if ( group_dest[i] && dp[i] > maxval ) maxval = dp[i];
-		cout << maxval << endl;
 	}
 }

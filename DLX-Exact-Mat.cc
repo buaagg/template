@@ -5,8 +5,7 @@ int L[max_size], R[max_size], U[max_size], D[max_size], CH[max_size], RH[max_siz
 int S[maxM], O[maxM];
 int head, size;
 int node(int up, int down, int left, int right) {
-    U[size] = up, D[size] = down;
-    L[size] = left, R[size] = right;
+    U[size] = up, D[size] = down; L[size] = left, R[size] = right;
     D[up] = U[down] = R[left] = L[right] = size;
     return size++;
 }
@@ -33,44 +32,30 @@ void init(int N, int M) {
 }
 void remove(const int &c) {
     L[R[c]] = L[c], R[L[c]] = R[c];
-    for (int i = D[c]; i != c; i = D[i]) {
-        for (int j = R[i]; j != i; j = R[j]) {
-            U[D[j]] = U[j], D[U[j]] = D[j];
-            --S[CH[j]];
-        }
-    }
+    for (int i = D[c]; i != c; i = D[i]) 
+        for (int j = R[i]; j != i; j = R[j]) 
+            U[D[j]] = U[j], D[U[j]] = D[j], --S[CH[j]];
 }
 void resume(const int &c) {
-    for (int i = U[c]; i != c; i = U[i]) {
-        for (int j = L[i]; j != i; j = L[j]) {
-            ++S[CH[j]];
-            U[D[j]] = D[U[j]] = j;
-        }
-    }
+    for (int i = U[c]; i != c; i = U[i]) 
+        for (int j = L[i]; j != i; j = L[j]) 
+            ++S[CH[j]]; U[D[j]] = D[U[j]] = j;
     L[R[c]] = R[L[c]] = c;
 }
 int len;
 bool DLX(const int &k) {
     if (R[head] == head) {
-        len = k - 1;
-        return true;
+        len = k - 1; return true;
     }
     int s = inf, c;
-    for (int t = R[head]; t != head; t = R[t]) {
+    for (int t = R[head]; t != head; t = R[t]) 
         if (S[t] < s) s = S[t], c = t;
-    }
     remove(c);
     for (int i = D[c]; i != c; i = D[i]) {
         O[k] = RH[i];
-        for (int j = R[i]; j != i; j = R[j]) {
-            remove(CH[j]);
-        }
-        if (DLX(k + 1)) {
-            return true;
-        }
-        for (int j = L[i]; j != i; j = L[j]) {
-            resume(CH[j]);
-        }
+        for (int j = R[i]; j != i; j = R[j]) remove(CH[j]);
+        if (DLX(k + 1)) return true;
+        for (int j = L[i]; j != i; j = L[j]) resume(CH[j]);
     }
     resume(c);
     return false;

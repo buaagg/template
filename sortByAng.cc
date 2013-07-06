@@ -20,7 +20,7 @@ struct Elem {
 Elem make_elem(Point p, int flag) {
 	Elem ret;
 	ret.arg = atan2(p.y, p.x); // may use atan2l
-	while ( dcmp( ret.arg, 0 ) < 0 ) ret.arg += M_PI; //如果是射线，改为M_2PI, 下同
+	while ( dcmp( ret.arg, 0 ) < 0 ) ret.arg += M_PI; //若是射线，改为M_2PI, 下同
 	while ( dcmp( ret.arg, M_PI ) >= 0 ) ret.arg -= M_PI; //注意不要用 deval( ret.arg ) >= M_PI
 	ret.flag = flag; return ret;
 }
@@ -45,13 +45,12 @@ void solve() {
 		int elemcnt = 0, countAt = 0, current = 0;
 		for (int i = 0; i < n; ++i) {
 			Point oa = a[i] - o, ob = b[i] - o;
-			int crossVal = deval( oa ^ ob );
-			int dotVal = deval( oa * ob );
+			int crossVal = deval( oa ^ ob ), dotVal = deval( oa * ob );
 			if ( crossVal == 0 && dotVal <= 0 ) {
 				countAt++; continue;
 			}
 			if ( crossVal < 0 ) swap(oa, ob);
-			elem[elemcnt++] = make_elem(oa, 1);
+			elem[elemcnt++] = make_elem(oa, 1); 
 			elem[elemcnt++] = make_elem(ob, -1);
 			if ( deval(oa.y) * deval(ob.y) < 0 || deval(ob.y) == 0 && deval(oa.y) != 0 ) 
 				++current; //如果是射线，则改为os.y < 0 && ob.y > 0 || oa.y < 0 && ob.y == 0

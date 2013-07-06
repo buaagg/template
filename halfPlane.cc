@@ -85,12 +85,10 @@ struct HalfPlane {
 } halfPlane;
 
 Point vertex[] = { //千万要逆时针给出
-	Point(-inf, -inf), Point(inf, -inf), Point(inf, inf), Point(-inf, inf),
-};
+	Point(-inf, -inf), Point(inf, -inf), Point(inf, inf), Point(-inf, inf),};
 LineAV edges[] = {
 	LineST(vertex[0], vertex[1]), LineST(vertex[1], vertex[2]),
-	LineST(vertex[2], vertex[3]), LineST(vertex[3], vertex[0]),
-};
+	LineST(vertex[2], vertex[3]), LineST(vertex[3], vertex[0]),};
 
 struct Poly {
 	Point p[maxn]; int n;
@@ -180,7 +178,5 @@ struct Convex : Poly {
 		if ( o == p[k] || o == p[k+1] ) return -2;
 		int s = sign( geom.cross(p[k], p[k+1], o) );
 		return s == 0 ? -1 : s > 0;
-	}
-	int intersect(Point p[], const LineA& ln) const { //TODO
 	}
 } convex;;

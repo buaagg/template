@@ -15,7 +15,7 @@ struct Point3D {
 	friend bool isColinear(const Point3D& a, const Point3D& b, const Point3D& c) {
 		return cross(a, b, c) == ZERO;
 	}
-	friend bool isCoplanar(const Point3D& a, const Point3D& b, const Point3D& c, const Point3D& d) {
+	friend bool isCoplanar(const Point3D&a,const Point3D&b,const Point3D&c,const Point3D&d) {
 		return sign( mix(b - a, c - a, d - a) ) == 0;
 	}
 	friend bool pointInTri(const Point3D& o, const Point3D& a, const Point3D& b, const Point3D& c) {
@@ -38,19 +38,6 @@ struct Point3D {
 	double project(const Point3D& o) const {
 		return *this * o.unit();
 	}
-	bool operator < (const Point3D &o) const {
-		if ( sign(x - o.x) != 0 ) return x < o.x;
-		if ( sign(y - o.y) != 0 ) return y < o.y;
-		if ( sign(z - o.z) != 0 ) return z < o.z;
-		return false;
-	}
-	bool operator == (const Point3D& o) const {
-		if ( sign(x - o.x) != 0 ) return false;
-		if ( sign(y - o.y) != 0 ) return false;
-		if ( sign(z - o.z) != 0 ) return false;
-		return true;
-	}
-	static Point3D ZERO;
 } Point3D::ZERO(0, 0, 0);
 
 struct Poly3D {

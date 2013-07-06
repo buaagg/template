@@ -29,12 +29,6 @@
 
 \begin{document}
 
-\section{TODO}
-\begin{itemize}
-\item 线段相交
-\item SA[M]
-\item 割点/桥
-\end{itemize}
 \section{Formula}
 \begin{itemize} 
 \setlength{\itemsep}{0pt}
@@ -102,6 +96,16 @@ $$ \frac{8k^2 + 12 k^3 + 3 k^4 + k^6}{24} $$
 \lstinputlisting{manacher.cc}
 \section{dfa}
 \lstinputlisting{dfa.cc}
+\section{sa}
+\begin{itemize} \setlength{\itemsep}{0pt}
+\item height[2..n]:height[i]保存的是lcp(sa[i],sa[i-1])
+\item rank[0..n-1]:rank[i]保存的是原串中suffix[i]的名次
+\end{itemize}
+\lstinputlisting{sa.cc}
+\section{sam}
+\lstinputlisting{sam.cc}
+\section{treap}
+\lstinputlisting{treap.cc}
 
 % Graph
 \section{dinic}
@@ -130,6 +134,8 @@ $$ \frac{8k^2 + 12 k^3 + 3 k^4 + k^6}{24} $$
 \lstinputlisting{FFT.cc}
 
 % Geom
+\section{segcross}
+\lstinputlisting{segcross.cc}
 \section{halfPlane}
 \lstinputlisting{halfPlane.cc}
 \section{convex}
@@ -146,6 +152,8 @@ $$ \frac{8k^2 + 12 k^3 + 3 k^4 + k^6}{24} $$
 \lstinputlisting{DLX-Exact-Mat.cc}
 \section{Dancing Links重复覆盖(矩阵处理)}
 \lstinputlisting{DLX-Repeat-Mat.cc}
+\section{Barty}
+\lstinputlisting{barty.cc}
 %\section{AC自动机数位dp}
 %\lstinputlisting{acdig.cc}
 \end{document}

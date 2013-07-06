@@ -114,39 +114,6 @@ struct mp { //BigUnsignedInteger
 		}
 		return s;
 	}
-	char *toString() const {
-		static char buf[cap + 5]; return toString(buf);
-	}
-	friend void add(mp& r, const mp& x, const mp& y) {
-		int i = 0;
-		for (int t = 0; i < x.n || i < y.n || t; ++i, t /= base) {
-			if (i < x.n) t += x.dat[i];
-			if (i < y.n) t += y.dat[i];
-			r.dat[i] = t % base;
-		}
-		r.n = i;
-	}
-	friend void sub(mp& r, const mp& x, const mp& y) {
-		r.n = x.n;
-		for (int i = 0, t = 0; i < r.n; ++i) {
-			r.dat[i] = x.dat[i] - t;
-			if ( i < y.n ) r.dat[i] -= y.dat[i];
-			if ( r.dat[i] < 0 ) {
-				t = 1; r.dat[i] += base;
-			} else {
-				t = 0;
-			}
-		}
-		while (r.n && 0 == r.dat[r.n - 1]) --r.n;
-	}
-	friend void mul(mp& r, const mp& x, int y) {
-		int i = 0;
-		for (LL t = 0; i < x.n || t; ++i, t /= base) {
-			if (i < x.n) t += (LL)(x.dat[i]) * y;
-			r.dat[i] = t % base;
-		}
-		r.n = i;
-	}
 	friend void mulfft(mp& r, const mp& x, const mp& y) {
 		static poly px, py, pr;
 		px.init(x.dat, x.n);
@@ -158,14 +125,6 @@ struct mp { //BigUnsignedInteger
 			r.dat[i] = t % base;
 		}
 		r.n = i;
-	}
-	friend void div(mp& q, int &r, const mp& x, int y) {
-		q.n = x.n; r = 0;
-		for (int i = x.n - 1; i >= 0; --i, r %= y) {
-			r = r * base + x.dat[i];
-			q.dat[i] = r / y;
-		}
-		while (q.n && 0 == q.dat[q.n-1]) --q.n;
 	}
 };
 
